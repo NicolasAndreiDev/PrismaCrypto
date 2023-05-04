@@ -1,0 +1,60 @@
+.container{
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    position: relative;
+    background-color: #141414;
+    .logo, .logoInto{
+        height: 5.2rem;
+        width: 5.8rem;
+        position: absolute;
+        left: 4rem;
+        top: 4rem;
+    }
+    .intro{
+        display: none;
+        height: 100vh;
+        width: 100vw;
+        background-color: #410CD9;
+        place-items: center;
+        animation: introducao 1s 1.4s both;
+        .logoIntro{
+            height: 6.2rem;
+            width: 7rem;
+            animation: logo 1s;
+        }
+    }
+}
+
+@keyframes logo {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+@keyframes introducao {
+    from{
+        opacity: 1;
+        z-index: 1;
+    }
+    to{
+        opacity: 0;
+        z-index: -1;
+    }
+}
+
+
+@media screen and (max-width: 500px) {
+    .container{
+        .logo{
+            left: 2rem;
+            top: 2rem;
+        }
+        .intro{
+            display: grid;
+        }
+    }   
+}

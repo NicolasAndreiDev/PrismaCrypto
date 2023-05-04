@@ -1,0 +1,9 @@
+@import '@/styles/abstract/variaveis.scss';
+
+.container{
+    background-color: $cor-secundaria;
+    width: 100%;
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: repeat(auto-fill, minmax(90rem, 30vw));
+}

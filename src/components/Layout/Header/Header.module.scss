@@ -1,0 +1,22 @@
+@import '@/styles/abstract/variaveis.scss';
+
+.container{
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    .header{
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem 2rem;
+        width: 100%;
+        background-color: $cor-principal;
+        .link{
+            text-decoration: none;
+            color: black;
+            .icon{
+                height: 3.2rem;
+                width: 3.2rem;
+            }
+        } 
+    }
+}

@@ -1,0 +1,23 @@
+@import '@/styles/abstract/variaveis.scss';
+
+.container{
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    .coin{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        color: $cor-principal;
+        .image{
+            height: 4rem;
+            width: 4rem;
+            border-radius: 10rem;
+        }
+    }
+    .grafico{
+        height: 40rem;
+        width: 80rem;      
+    }
+}

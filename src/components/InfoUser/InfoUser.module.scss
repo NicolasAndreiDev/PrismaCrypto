@@ -1,0 +1,30 @@
+@import '@/styles/abstract/variaveis.scss';
+
+.container{
+    height: 64vh;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: $cor-secundaria;
+    .top{
+        height: 4rem;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        .foto{
+            height: 12rem;
+            position: relative;
+            top: -6rem;
+            border-radius: 10rem;
+            object-fit: cover;
+            width: 12rem;
+        }
+    }
+}
+
+
+@media screen and (max-width: 500px) {
+    .container{
+        border-radius: 10rem 0 0 0;
+    }
+}
