@@ -4,9 +4,15 @@ import styles from './InfoUser.module.scss'
 import axios from 'axios';
 import { UserContext } from '@/providers/userProvider';
 
+type Coin = {
+    [key: string]: {
+        BRL: number;
+    }
+}
+
 export default function InfoUser() {
     const { user } = useContext(UserContext)
-    const [coins, setCoins] = useState([])
+    const [coins, setCoins] = useState<Coin>({})
     const [fav, setFav] = useState<Array<{}>>([])
 
     useEffect(() => {
@@ -33,7 +39,7 @@ export default function InfoUser() {
                 {newCoin.map(([coinName, coinData]) => {
                     return (
                         <>
-                            {fav.includes(coinName) ? <ChartInfo key={coinName} date={newDate} valor={coinData} crypto={coinName} /> : ''}
+                            {fav.includes(coinName) ? <ChartInfo key={coinName} date={newDate} valor={coinData.BRL} crypto={coinName} /> : ''}
                         </>
                     )
                 })}
