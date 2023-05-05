@@ -18,8 +18,8 @@ export default function Tabelas() {
             setCoin(result.data);
         };
         fetchCoinData()
-        // const intervalId = setInterval(fetchCoinData, 20000);
-        // return () => clearInterval(intervalId);
+        const intervalId = setInterval(fetchCoinData, 20000);
+        return () => clearInterval(intervalId);
     }, []);
 
     const newCoin = Object.entries(coin)

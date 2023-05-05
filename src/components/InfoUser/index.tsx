@@ -18,8 +18,8 @@ export default function InfoUser() {
             setFav(newList);
         };
         fetchCoinData()
-        // const intervalId = setInterval(fetchCoinData, 20000);
-        // return () => clearInterval(intervalId);
+        const intervalId = setInterval(fetchCoinData, 20000);
+        return () => clearInterval(intervalId);
     }, [user]);
 
     const newCoin = Object.entries(coins)
