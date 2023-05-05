@@ -51,5 +51,10 @@
 @media screen and (max-width:500px) {
     .container{
         height: 62vh;
+        .button{
+            bottom: 2rem;
+            top: initial;
+            right: initial;
+        }
     }
 }
