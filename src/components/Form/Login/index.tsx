@@ -1,23 +1,49 @@
+import axios from 'axios';
 import styles from './Login.module.scss';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
+import { setCookie } from 'nookies';
 
-export default function Login({onClick}: {onClick: () => void}) {
+interface User {
+    email: string,
+    password: string,
+}
+
+export default function Login({ onClick }: { onClick: () => void }) {
     const router = useRouter();
+    const [values, setValues] = useState<User>({ email: '', password: '' });
 
-    function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
-        router.push('/')
+
+        try {
+            const users = await axios.post('http://localhost:4000/login', {
+                email: values.email,
+                password: values.password
+            })
+            if (users) {
+                setCookie(null, 'token', users.data, { path: '/' });
+                router.push('/')
+            }
+        } catch {
+            alert('Erro com o servidor')
+        }
     }
 
-    return(
+    function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+        const { name, value } = e.target;
+        setValues((prev) => ({ ...prev, [name]: value }))
+    }
+
+    return (
         <form className={styles.form} onSubmit={handleSubmit}>
             <div className={styles.group}>
                 <label htmlFor={'email'} className={styles.label}>E-mail</label>
-                <input id={'email'} className={styles.input} autoComplete={'off'}/>
+                <input id={'email'} className={styles.input} autoComplete={'off'} name={'email'} value={values.email} onChange={handleChange} />
             </div>
             <div className={styles.group}>
                 <label htmlFor={'password'} className={styles.label}>Password</label>
-                <input id={'password'} type={'password'} autoComplete={'current-password'} className={styles.input}/>
+                <input id={'password'} type={'password'} autoComplete={'current-password'} name={'password'} value={values.password} className={styles.input} onChange={handleChange} />
             </div>
             <button className={styles.button}>Login</button>
             <p className={styles.newUser} onClick={onClick}>Não possui uma conta?</p>

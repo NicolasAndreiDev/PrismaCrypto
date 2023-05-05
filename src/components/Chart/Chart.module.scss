@@ -1,15 +1,23 @@
 @import '@/styles/abstract/variaveis.scss';
 
 .container{
-    width: 20rem;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    position: relative;
+    border-radius: .4rem;
     padding: 2rem;
+    background-color: $cor-principal;
     .coin{
         display: flex;
+        position: absolute;
+        top: 2rem;
+        left: 2rem;
         align-items: center;
         gap: 1rem;
-        color: $cor-principal;
+        color: $cor-secundaria;
         .image{
             height: 4rem;
             width: 4rem;
@@ -17,7 +25,31 @@
         }
     }
     .grafico{
+        display: flex;
+        align-items: center;
+        justify-content: center;
         height: 40rem;
-        width: 80rem;      
+        width: 100%;     
+    }
+    .button{
+        background-color: $cor-terciaria;
+        border: none;
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        color: $cor-principal;
+        padding: 1rem 2rem;
+        font-size: $tamanho-da-fonte;
+        border-radius: .4rem;
+        cursor: pointer;
+        &:hover{
+            background-color: $cor-terciaria-hover;
+        }
+    }
+}
+
+@media screen and (max-width:500px) {
+    .container{
+        height: 62vh;
     }
 }

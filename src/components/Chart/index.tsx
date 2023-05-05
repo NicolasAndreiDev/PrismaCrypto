@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import styles from './Chart.module.scss'
+import Button from './Button';
 
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
@@ -55,7 +56,7 @@ function ChartInfo({ date, valor, crypto }: Props) {
         }
       }
     },
-    colors: ['#410CD9'],
+    colors: ['#FA2889'],
     tooltip: {
       y: {
         formatter: function (value: any) {
@@ -68,11 +69,12 @@ function ChartInfo({ date, valor, crypto }: Props) {
   return (
     <div className={styles.container}>
       <div className={styles.coin}>
-        <img src={`/${crypto}.png`} className={styles.image}/>
+        <img src={`./images/${crypto}.png`} className={styles.image}/>
         <h2>{crypto}</h2>
       </div>
       {/* @ts-ignore */}
       <Chart options={options} series={options.series} type={"line"} className={styles.grafico}/>
+      <Button className={styles.button} cryptos={crypto}/>
     </div>
   );
 }

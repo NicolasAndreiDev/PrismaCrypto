@@ -1,13 +1,13 @@
 import InfoUser from "@/components/InfoUser";
 import Layout from "@/components/Layout";
-import styles from "@/styles/User.module.scss";
+import PrivateRoute from "@/utils/PrivateRoute";
 
 export default function User() {
     return (
-        <div className={styles.container}>
+        <PrivateRoute>
             <Layout>
                 <InfoUser />
             </Layout>
-        </div>
+        </PrivateRoute>
     )
 }
