@@ -8,8 +8,10 @@ export default function Button({ className, cryptos }: { className: string, cryp
 
     useEffect(() => {
         async function fetchData() {
-            const filtercoins = user!.favcoins.filter(coins => coins.coin == cryptos)
-            setIsFavorite(filtercoins?.length > 0)
+            const filtercoins = user?.favcoins.filter(coins => coins.coin == cryptos)
+            if(filtercoins){
+                setIsFavorite(filtercoins.length > 0)
+            }
         }
         fetchData()
     }, [user])
